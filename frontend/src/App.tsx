@@ -5,7 +5,7 @@ import LandingPage from './pages/LandingPage';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import ProtectedRoute from './components/common/ProtectedRoute';
-import { MeditationPage } from "./components/pages/MeditationPage";
+import MeditationPage from "./components/pages/MeditationPage";
 import { SoundHealingPage } from "./components/pages/SoundHealingPage";
 import { CommunityPage } from "./components/pages/CommunityPage";
 import { ChatbotPage } from "./components/pages/ChatbotPage";
