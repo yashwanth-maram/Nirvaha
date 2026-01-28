@@ -63,15 +63,15 @@ export function AnalyticsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Analytics & Insights</h1>
-          <p className="text-white/80">Track platform performance and user engagement</p>
+          <h1 className="text-3xl font-bold text-black mb-2">Analytics & Insights</h1>
+          <p className="text-gray-700">Track platform performance and user engagement</p>
         </div>
         <div className="flex items-center gap-3">
           <Select value={dateRange} onValueChange={setDateRange}>
-            <SelectTrigger className="w-[180px] bg-white/10 border-white/20 text-white">
+            <SelectTrigger className="w-[180px] bg-white border-emerald-200 text-black">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white/95">
+            <SelectContent className="bg-white">
               <SelectItem value="7d">Last 7 days</SelectItem>
               <SelectItem value="30d">Last 30 days</SelectItem>
               <SelectItem value="90d">Last 90 days</SelectItem>
@@ -80,14 +80,14 @@ export function AnalyticsPage() {
           </Select>
           <Button
             variant="outline"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white border-emerald-200 text-black hover:bg-emerald-50"
           >
             <Download className="mr-2 w-4 h-4" />
             Export CSV
           </Button>
           <Button
             variant="outline"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white border-emerald-200 text-black hover:bg-emerald-50"
           >
             <FileText className="mr-2 w-4 h-4" />
             Export PDF
@@ -98,21 +98,21 @@ export function AnalyticsPage() {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* User Growth Line Chart */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
-          <h2 className="text-xl font-bold text-white mb-4">User Growth</h2>
+        <Card className="bg-white border-emerald-200 p-6">
+          <h2 className="text-xl font-bold text-black mb-4">User Growth</h2>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={userGrowthData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#10b98140" />
               <XAxis
                 dataKey="date"
-                stroke="#ffffff80"
+                stroke="#6b7280"
                 style={{ fontSize: "12px" }}
               />
-              <YAxis stroke="#ffffff80" style={{ fontSize: "12px" }} />
+              <YAxis stroke="#6b7280" style={{ fontSize: "12px" }} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "rgba(255, 255, 255, 0.95)",
-                  border: "1px solid #ccc",
+                  border: "1px solid #10b981",
                   borderRadius: "4px",
                 }}
               />
@@ -129,21 +129,21 @@ export function AnalyticsPage() {
         </Card>
 
         {/* Bookings Per Day Bar Chart */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
-          <h2 className="text-xl font-bold text-white mb-4">Bookings Per Day</h2>
+        <Card className="bg-white border-emerald-200 p-6">
+          <h2 className="text-xl font-bold text-black mb-4">Bookings Per Day</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={bookingsData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#10b98140" />
               <XAxis
                 dataKey="day"
-                stroke="#ffffff80"
+                stroke="#6b7280"
                 style={{ fontSize: "12px" }}
               />
-              <YAxis stroke="#ffffff80" style={{ fontSize: "12px" }} />
+              <YAxis stroke="#6b7280" style={{ fontSize: "12px" }} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "rgba(255, 255, 255, 0.95)",
-                  border: "1px solid #ccc",
+                  border: "1px solid #10b981",
                   borderRadius: "4px",
                 }}
               />
@@ -154,8 +154,8 @@ export function AnalyticsPage() {
         </Card>
 
         {/* Revenue Breakdown Pie Chart */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6 lg:col-span-2">
-          <h2 className="text-xl font-bold text-white mb-4">Revenue Breakdown</h2>
+        <Card className="bg-white border-emerald-200 p-6 lg:col-span-2">
+          <h2 className="text-xl font-bold text-black mb-4">Revenue Breakdown</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
@@ -178,7 +178,7 @@ export function AnalyticsPage() {
                 <Tooltip
                   contentStyle={{
                     backgroundColor: "rgba(255, 255, 255, 0.95)",
-                    border: "1px solid #ccc",
+                    border: "1px solid #10b981",
                     borderRadius: "4px",
                   }}
                   formatter={(value: number) => `₹${value.toLocaleString()}`}
@@ -193,17 +193,17 @@ export function AnalyticsPage() {
                       className="w-4 h-4 rounded-full"
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="text-white font-medium">{item.name}</span>
+                    <span className="text-black font-medium">{item.name}</span>
                   </div>
-                  <span className="text-white font-bold">
+                  <span className="text-black font-bold">
                     ₹{item.value.toLocaleString()}
                   </span>
                 </div>
               ))}
-              <div className="pt-4 border-t border-white/20">
+              <div className="pt-4 border-t border-emerald-200">
                 <div className="flex items-center justify-between">
-                  <span className="text-white font-bold text-lg">Total Revenue</span>
-                  <span className="text-emerald-400 font-bold text-xl">
+                  <span className="text-black font-bold text-lg">Total Revenue</span>
+                  <span className="text-emerald-600 font-bold text-xl">
                     ₹{revenueData.reduce((sum, item) => sum + item.value, 0).toLocaleString()}
                   </span>
                 </div>
@@ -223,11 +223,11 @@ export function AnalyticsPage() {
         ].map((metric, index) => (
           <Card
             key={index}
-            className="bg-white/10 backdrop-blur-md border-white/20 p-6"
+            className="bg-white border-emerald-200 p-6"
           >
-            <p className="text-white/80 text-sm mb-2">{metric.label}</p>
-            <p className="text-white text-2xl font-bold mb-1">{metric.value}</p>
-            <p className="text-emerald-400 text-sm font-semibold">{metric.change}</p>
+            <p className="text-gray-700 text-sm mb-2">{metric.label}</p>
+            <p className="text-black text-2xl font-bold mb-1">{metric.value}</p>
+            <p className="text-emerald-600 text-sm font-semibold">{metric.change}</p>
           </Card>
         ))}
       </div>

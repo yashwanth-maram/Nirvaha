@@ -123,8 +123,8 @@ export function AdminDashboardPage() {
     <div className="max-w-7xl mx-auto space-y-6">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
-        <p className="text-white/80">Welcome back, {user?.name || "Admin"}</p>
+        <h1 className="text-3xl font-bold text-black mb-2">Dashboard Overview</h1>
+        <p className="text-gray-700">Welcome back, {user?.name || "Admin"}</p>
       </div>
 
       {/* Stats Grid - Clickable */}
@@ -135,11 +135,11 @@ export function AdminDashboardPage() {
             <Card
               key={index}
               onClick={() => navigate(stat.path)}
-              className="bg-white/10 backdrop-blur-md border-white/20 hover:border-white/40 cursor-pointer transition-all shadow-lg hover:scale-[1.02] group"
+              className="bg-white border-emerald-200 hover:border-emerald-400 hover:shadow-lg cursor-pointer transition-all group"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-white/80 text-sm font-medium">{stat.title}</h3>
+                  <h3 className="text-gray-700 text-sm font-medium">{stat.title}</h3>
                   <div
                     className={`w-10 h-10 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform`}
                   >
@@ -147,8 +147,8 @@ export function AdminDashboardPage() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-bold text-white">{stat.value}</span>
-                  <span className="text-emerald-400 text-sm font-semibold">{stat.change}</span>
+                  <span className="text-3xl font-bold text-black">{stat.value}</span>
+                  <span className="text-emerald-600 text-sm font-semibold">{stat.change}</span>
                 </div>
               </div>
             </Card>
@@ -158,21 +158,21 @@ export function AdminDashboardPage() {
 
       {/* Alerts / Pending Approvals */}
       {pendingApprovals > 0 && (
-        <Card className="bg-yellow-500/20 backdrop-blur-md border-yellow-500/50">
+        <Card className="bg-yellow-50 border-yellow-300">
           <div className="p-6">
             <div className="flex items-center gap-3">
-              <AlertCircle className="w-5 h-5 text-yellow-400" />
+              <AlertCircle className="w-5 h-5 text-yellow-600" />
               <div className="flex-1">
-                <h3 className="text-white font-semibold mb-1">
+                <h3 className="text-black font-semibold mb-1">
                   {pendingApprovals} Companion Application{pendingApprovals > 1 ? "s" : ""} Pending Approval
                 </h3>
-                <p className="text-white/80 text-sm">
+                <p className="text-gray-700 text-sm">
                   Review and approve companion applications to expand your network
                 </p>
               </div>
               <Button
                 onClick={() => navigate("/admin/companions?filter=pending")}
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white"
+                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white"
               >
                 Review Now
               </Button>
@@ -183,15 +183,15 @@ export function AdminDashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Companion Applications */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20">
+        <Card className="bg-white border-emerald-200 shadow-md">
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-white">Recent Companion Applications</h2>
+              <h2 className="text-xl font-bold text-black">Recent Companion Applications</h2>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate("/admin/companions")}
-                className="text-white/80 hover:text-white hover:bg-white/10"
+                className="text-emerald-700 hover:text-black hover:bg-emerald-50"
               >
                 View All
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -224,15 +224,15 @@ export function AdminDashboardPage() {
         </Card>
 
         {/* Recent Bookings */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20">
+        <Card className="bg-white border-emerald-200 shadow-md">
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-white">Recent Bookings</h2>
+              <h2 className="text-xl font-bold text-black">Recent Bookings</h2>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate("/admin/bookings")}
-                className="text-white/80 hover:text-white hover:bg-white/10"
+                className="text-emerald-700 hover:text-black hover:bg-emerald-50"
               >
                 View All
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -262,7 +262,7 @@ export function AdminDashboardPage() {
                   key: "date",
                   header: "Date",
                   render: (item) => (
-                    <span className="text-white/80 text-sm">
+                    <span className="text-gray-700 text-sm">
                       {item.date} {item.time}
                     </span>
                   ),

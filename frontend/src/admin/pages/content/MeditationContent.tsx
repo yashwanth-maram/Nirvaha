@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Search, Plus, Upload } from "lucide-react";
+import { Search, Plus, Upload, CheckCircle, XCircle, Clock } from "lucide-react";
 
 interface Meditation {
   id: string;
@@ -163,13 +163,13 @@ export function MeditationContent() {
     {
       key: "duration",
       header: "Duration",
-      render: (item: Meditation) => <span className="text-white/80">{item.duration} min</span>,
+      render: (item: Meditation) => <span className="text-gray-700">{item.duration} min</span>,
     },
     {
       key: "level",
       header: "Level",
       render: (item: Meditation) => (
-        <span className="px-2 py-1 rounded text-xs font-medium bg-blue-500/20 text-blue-300 border border-blue-500/50">
+        <span className="px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 border border-blue-300">
           {item.level}
         </span>
       ),
@@ -193,7 +193,7 @@ export function MeditationContent() {
       key: "status",
       header: "Status",
       render: (item: Meditation) => (
-        <span className="px-2 py-1 rounded text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/50">
+        <span className="px-2 py-1 rounded text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-300">
           {item.status}
         </span>
       ),
@@ -202,15 +202,15 @@ export function MeditationContent() {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
+      <Card className="bg-white border-emerald-200 p-6">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex-1 relative w-full">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               placeholder="Search meditations..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              className="pl-10 bg-white border-emerald-200 text-black placeholder:text-gray-400"
             />
           </div>
           <Button
@@ -223,7 +223,7 @@ export function MeditationContent() {
         </div>
       </Card>
 
-      <Card className="bg-white/10 backdrop-blur-md border-white/20">
+      <Card className="bg-white border-emerald-200">
         <AdminTable
           data={filteredMeditations}
           columns={columns}

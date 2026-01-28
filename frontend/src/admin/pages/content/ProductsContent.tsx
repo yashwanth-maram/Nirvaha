@@ -173,14 +173,14 @@ export function ProductsContent() {
       key: "price",
       header: "Price",
       render: (item: Product) => (
-        <span className="font-semibold text-white">₹{item.price}</span>
+        <span className="font-semibold text-black">₹{item.price}</span>
       ),
     },
     {
       key: "stock",
       header: "Stock",
       render: (item: Product) => (
-        <span className={item.stock === 0 ? "text-red-400" : "text-white/80"}>
+        <span className={item.stock === 0 ? "text-red-500 font-semibold" : "text-gray-700"}>
           {item.stock} units
         </span>
       ),
@@ -210,15 +210,15 @@ export function ProductsContent() {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
+      <Card className="bg-white border-emerald-200 p-6">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex-1 relative w-full">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              className="pl-10 bg-white border-emerald-200 text-black placeholder:text-gray-400"
             />
           </div>
           <Button
@@ -231,7 +231,7 @@ export function ProductsContent() {
         </div>
       </Card>
 
-      <Card className="bg-white/10 backdrop-blur-md border-white/20">
+      <Card className="bg-white border-emerald-200">
         <AdminTable
           data={filteredProducts}
           columns={columns}

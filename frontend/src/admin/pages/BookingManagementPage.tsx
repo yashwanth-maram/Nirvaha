@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Search, Calendar as CalendarIcon, Download } from "lucide-react";
+import { Search, Calendar as CalendarIcon, Download, CheckCircle, XCircle, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const formatDate = (date: Date | undefined): string => {
@@ -192,7 +192,7 @@ export function BookingManagementPage() {
       key: "id",
       header: "Booking ID",
       render: (item: Booking) => (
-        <span className="font-mono text-white font-medium">{item.id}</span>
+        <span className="font-mono text-black font-medium">{item.id}</span>
       ),
     },
     {
@@ -222,8 +222,8 @@ export function BookingManagementPage() {
         <span
           className={`px-2 py-1 rounded text-xs font-medium ${
             item.type === "Video"
-              ? "bg-blue-500/20 text-blue-300 border border-blue-500/50"
-              : "bg-teal-500/20 text-teal-300 border border-teal-500/50"
+              ? "bg-blue-100 text-blue-800 border border-blue-300"
+              : "bg-teal-100 text-teal-800 border border-teal-300"
           }`}
         >
           {item.type}
@@ -234,7 +234,7 @@ export function BookingManagementPage() {
       key: "platform",
       header: "Platform",
       render: (item: Booking) => (
-        <span className="text-white/80">{item.platform}</span>
+        <span className="text-gray-700">{item.platform}</span>
       ),
     },
     {
@@ -242,8 +242,8 @@ export function BookingManagementPage() {
       header: "Date & Time",
       render: (item: Booking) => (
         <div>
-          <div className="text-white">{item.date}</div>
-          <div className="text-sm text-white/60">{item.time}</div>
+          <div className="text-black">{item.date}</div>
+          <div className="text-sm text-gray-700">{item.time}</div>
         </div>
       ),
     },
@@ -258,7 +258,7 @@ export function BookingManagementPage() {
       key: "price",
       header: "Price",
       render: (item: Booking) => (
-        <span className="font-semibold text-white">₹{item.price}</span>
+        <span className="font-semibold text-black">₹{item.price}</span>
       ),
     },
     {
@@ -280,8 +280,8 @@ export function BookingManagementPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Booking Management</h1>
-          <p className="text-white/80">View and manage all platform bookings</p>
+          <h1 className="text-3xl font-bold text-black mb-2">Booking Management</h1>
+          <p className="text-gray-700">View and manage all platform bookings</p>
         </div>
         <Button className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white">
           <Download className="mr-2 w-4 h-4" />
@@ -290,22 +290,22 @@ export function BookingManagementPage() {
       </div>
 
       {/* Filters */}
-      <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
+      <Card className="bg-white border-emerald-200 p-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative md:col-span-2">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               placeholder="Search by ID, user, or companion..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              className="pl-10 bg-white border-emerald-200 text-black placeholder:text-gray-400"
             />
           </div>
           <Select value={filter} onValueChange={setFilter}>
-            <SelectTrigger className="w-full bg-white/10 border-white/20 text-white">
+            <SelectTrigger className="w-full bg-white border-emerald-200 text-black">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white/95">
+            <SelectContent className="bg-white">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="upcoming">Upcoming</SelectItem>
               <SelectItem value="completed">Completed</SelectItem>
@@ -318,8 +318,8 @@ export function BookingManagementPage() {
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal bg-white/10 border-white/20 text-white hover:bg-white/20",
-                  !dateFrom && "text-white/50"
+                  "w-full justify-start text-left font-normal bg-white border-emerald-200 text-black hover:bg-emerald-50",
+                  !dateFrom && "text-gray-400"
                 )}
               >
                 <CalendarIcon className="mr-2 h-4 w-4" />
@@ -353,7 +353,7 @@ export function BookingManagementPage() {
       </Card>
 
       {/* Table */}
-      <Card className="bg-white/10 backdrop-blur-md border-white/20">
+      <Card className="bg-white border-emerald-200">
         <AdminTable
           data={filteredBookings}
           columns={columns}

@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search, Star } from "lucide-react";
+import { Search, Star, CheckCircle, XCircle, Clock } from "lucide-react";
 
 interface Companion {
   id: string;
@@ -197,8 +197,8 @@ export function CompanionManagementPage() {
       header: "Name",
       render: (item: Companion) => (
         <div>
-          <div className="font-medium text-white">{item.name}</div>
-          <div className="text-sm text-white/60">{item.email}</div>
+          <div className="font-medium text-black">{item.name}</div>
+          <div className="text-sm text-gray-700">{item.email}</div>
         </div>
       ),
     },
@@ -212,7 +212,7 @@ export function CompanionManagementPage() {
       render: (item: Companion) => (
         <div className="flex items-center gap-1">
           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-          <span className="text-white">{item.rating}</span>
+          <span className="text-black">{item.rating}</span>
         </div>
       ),
     },
@@ -232,26 +232,32 @@ export function CompanionManagementPage() {
         <div className="flex gap-2">
           <Button
             size="sm"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+            className="bg-emerald-500 hover:bg-emerald-600 text-white flex items-center gap-1"
             onClick={() => openConfirm("approve", item)}
             disabled={item.status === "approved"}
+            title="Approve companion application"
           >
+            <CheckCircle className="w-4 h-4" />
             Approve
           </Button>
           <Button
             size="sm"
-            className="bg-amber-500 hover:bg-amber-600 text-white"
+            className="bg-amber-500 hover:bg-amber-600 text-white flex items-center gap-1"
             onClick={() => openConfirm("reject", item)}
             disabled={item.status === "rejected"}
+            title="Reject companion application"
           >
+            <XCircle className="w-4 h-4" />
             Reject
           </Button>
           <Button
             size="sm"
-            variant="destructive"
+            className="bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-1"
             onClick={() => openConfirm("delete", item)}
+            title="Hold application for review"
           >
-            Delete
+            <Clock className="w-4 h-4" />
+            Hold
           </Button>
         </div>
       ),
@@ -262,27 +268,27 @@ export function CompanionManagementPage() {
     <div className="max-w-7xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Companion Management</h1>
-          <p className="text-white/80">Approve, reject, and manage companion applications</p>
+          <h1 className="text-3xl font-bold text-black mb-2">Companion Management</h1>
+          <p className="text-gray-700">Approve, reject, and manage companion applications</p>
         </div>
       </div>
 
-      <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
+      <Card className="bg-white border-emerald-200 p-6">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               placeholder="Search by name or expertise..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              className="pl-10 bg-white border-emerald-200 text-black placeholder:text-gray-400"
             />
           </div>
           <Select value={filter} onValueChange={setFilter}>
-            <SelectTrigger className="w-full md:w-[200px] bg-white/10 border-white/20 text-white">
+            <SelectTrigger className="w-full md:w-[200px] bg-white border-emerald-200 text-black">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white/95">
+            <SelectContent className="bg-white">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="pending">Pending</SelectItem>
               <SelectItem value="approved">Approved</SelectItem>
@@ -292,7 +298,7 @@ export function CompanionManagementPage() {
         </div>
       </Card>
 
-      <Card className="bg-white/10 backdrop-blur-md border-white/20">
+      <Card className="bg-white border-emerald-200">
         <AdminTable data={filteredCompanions} columns={columns} emptyMessage="No companions found" />
       </Card>
 

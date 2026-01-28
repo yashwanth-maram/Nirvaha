@@ -147,9 +147,9 @@ export function UserManagementPage() {
 
   const getRoleBadge = (role: string) => {
     const configs = {
-      admin: { label: "Admin", className: "bg-purple-500/20 text-purple-300 border-purple-500/50" },
-      companion: { label: "Companion", className: "bg-teal-500/20 text-teal-300 border-teal-500/50" },
-      user: { label: "User", className: "bg-blue-500/20 text-blue-300 border-blue-500/50" },
+      admin: { label: "Admin", className: "bg-purple-100 text-purple-800 border-purple-300" },
+      companion: { label: "Companion", className: "bg-teal-100 text-teal-800 border-teal-300" },
+      user: { label: "User", className: "bg-blue-100 text-blue-800 border-blue-300" },
     };
     const config = configs[role as keyof typeof configs] || configs.user;
     return (
@@ -165,8 +165,8 @@ export function UserManagementPage() {
       header: "Name",
       render: (item: PlatformUser) => (
         <div>
-          <div className="font-medium text-white">{item.name}</div>
-          <div className="text-sm text-white/60">{item.email}</div>
+          <div className="font-medium text-black">{item.name}</div>
+          <div className="text-sm text-gray-700">{item.email}</div>
         </div>
       ),
     },
@@ -209,28 +209,28 @@ export function UserManagementPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">User Management</h1>
-          <p className="text-white/80">Monitor and manage user accounts and roles</p>
+          <h1 className="text-3xl font-bold text-black mb-2">User Management</h1>
+          <p className="text-gray-700">Monitor and manage user accounts and roles</p>
         </div>
       </div>
 
       {/* Filters */}
-      <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6">
+      <Card className="bg-white border-emerald-200 p-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative md:col-span-2">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               placeholder="Search by name or email..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              className="pl-10 bg-white border-emerald-200 text-black placeholder:text-gray-400"
             />
           </div>
           <Select value={roleFilter} onValueChange={setRoleFilter}>
-            <SelectTrigger className="w-full bg-white/10 border-white/20 text-white">
+            <SelectTrigger className="w-full bg-white border-emerald-200 text-black">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white/95">
+            <SelectContent className="bg-white">
               <SelectItem value="all">All Roles</SelectItem>
               <SelectItem value="user">User</SelectItem>
               <SelectItem value="companion">Companion</SelectItem>
@@ -238,10 +238,10 @@ export function UserManagementPage() {
             </SelectContent>
           </Select>
           <Select value={filter} onValueChange={setFilter}>
-            <SelectTrigger className="w-full bg-white/10 border-white/20 text-white">
+            <SelectTrigger className="w-full bg-white border-emerald-200 text-black">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white/95">
+            <SelectContent className="bg-white">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="active">Active</SelectItem>
               <SelectItem value="suspended">Suspended</SelectItem>
@@ -253,7 +253,7 @@ export function UserManagementPage() {
       </Card>
 
       {/* Table */}
-      <Card className="bg-white/10 backdrop-blur-md border-white/20">
+      <Card className="bg-white border-emerald-200">
         <AdminTable
           data={filteredUsers}
           columns={columns}

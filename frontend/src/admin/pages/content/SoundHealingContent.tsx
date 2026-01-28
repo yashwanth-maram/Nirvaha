@@ -187,13 +187,13 @@ export function SoundHealingContent() {
       key: "frequency",
       header: "Frequency",
       render: (item: SoundHealing) => (
-        <span className="font-mono text-white/80">{item.frequency}</span>
+        <span className="font-mono text-gray-700">{item.frequency}</span>
       ),
     },
     {
       key: "duration",
       header: "Duration",
-      render: (item: SoundHealing) => <span className="text-white/80">{item.duration} min</span>,
+      render: (item: SoundHealing) => <span className="text-gray-700">{item.duration} min</span>,
     },
     {
       key: "mood",
@@ -201,7 +201,7 @@ export function SoundHealingContent() {
       render: (item: SoundHealing) => (
         <div className="flex flex-wrap gap-1">
           {item.mood.map((m, idx) => (
-            <Badge key={idx} variant="outline" className="text-xs bg-teal-500/20 text-teal-300 border-teal-500/50">
+            <Badge key={idx} variant="outline" className="text-xs bg-teal-100 text-teal-800 border-teal-300">
               {m}
             </Badge>
           ))}

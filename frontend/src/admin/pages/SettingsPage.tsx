@@ -19,36 +19,36 @@ export function SettingsPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">Settings</h1>
-        <p className="text-white/80">Configure platform preferences for admins and companions</p>
+        <h1 className="text-3xl font-bold text-black mb-2">Settings</h1>
+        <p className="text-gray-700">Configure platform preferences for admins and companions</p>
       </div>
 
-      <Card className="bg-white/10 backdrop-blur-md border-white/20 p-6 space-y-6">
+      <Card className="bg-white border-emerald-200 p-6 space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="platformName" className="text-white">Platform Name</Label>
+          <Label htmlFor="platformName" className="text-black">Platform Name</Label>
           <Input
             id="platformName"
             value={platformName}
             onChange={(e) => setPlatformName(e.target.value)}
-            className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+            className="bg-white border-emerald-200 text-black placeholder:text-gray-400"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="supportEmail" className="text-white">Support Email</Label>
+          <Label htmlFor="supportEmail" className="text-black">Support Email</Label>
           <Input
             id="supportEmail"
             type="email"
             value={supportEmail}
             onChange={(e) => setSupportEmail(e.target.value)}
-            className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+            className="bg-white border-emerald-200 text-black placeholder:text-gray-400"
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 rounded-lg border border-white/10 bg-white/5">
+        <div className="flex items-center justify-between p-4 rounded-lg border border-emerald-200 bg-emerald-50">
           <div>
-            <p className="text-white font-semibold">Enable Companion Onboarding</p>
-            <p className="text-white/70 text-sm">Allow new companions to submit applications</p>
+            <p className="text-black font-semibold">Enable Companion Onboarding</p>
+            <p className="text-gray-700 text-sm">Allow new companions to submit applications</p>
           </div>
           <Switch
             checked={onboardingEnabled}
@@ -65,7 +65,7 @@ export function SettingsPage() {
             Save Settings
           </Button>
           {lastSaved && (
-            <span className="text-white/70 text-sm">Last saved at {lastSaved}</span>
+            <span className="text-gray-700 text-sm">Last saved at {lastSaved}</span>
           )}
         </div>
       </Card>
