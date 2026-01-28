@@ -23,6 +23,17 @@ import { InspirationalQuotes } from "./components/dashboard/InspirationalQuotes"
 import { CaseStudies } from "./components/dashboard/CaseStudies";
 import { FAQSection } from "./components/dashboard/FAQSection";
 import { DashboardFooter } from "./components/dashboard/DashboardFooter";
+import { AdminLayout } from "./admin/layout/AdminLayout";
+import { AdminDashboardPage } from "./admin/pages/AdminDashboardPage";
+import { AnalyticsPage } from "./admin/pages/AnalyticsPage";
+import { BookingManagementPage } from "./admin/pages/BookingManagementPage";
+import { CompanionManagementPage } from "./admin/pages/CompanionManagementPage";
+import { ContentManagementPage } from "./admin/pages/ContentManagementPage";
+import { SettingsPage } from "./admin/pages/SettingsPage";
+import { UserManagementPage } from "./admin/pages/UserManagementPage";
+import { MeditationContent } from "./admin/pages/content/MeditationContent";
+import { SoundHealingContent } from "./admin/pages/content/SoundHealingContent";
+import { ProductsContent } from "./admin/pages/content/ProductsContent";
 
 /**
  * Dashboard Routes Component
@@ -53,6 +64,7 @@ const DashboardRoutes = () => (
   </Routes>
 );
 
+
 function AppInner() {
   return (
     <div className="min-h-screen spiritual-page-bg relative overflow-hidden">
@@ -77,6 +89,28 @@ function AppInner() {
             </ProtectedRoute>
           }
         />
+
+        {/* Admin Routes - Protected */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<AdminDashboardPage />} />
+          <Route path="analytics" element={<AnalyticsPage />} />
+          <Route path="bookings" element={<BookingManagementPage />} />
+          <Route path="companions" element={<CompanionManagementPage />} />
+          <Route path="content" element={<ContentManagementPage />} />
+          <Route path="content/meditation" element={<MeditationContent />} />
+          <Route path="content/sound" element={<SoundHealingContent />} />
+          <Route path="content/products" element={<ProductsContent />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="users" element={<UserManagementPage />} />
+          <Route path="*" element={<Navigate to="/admin" replace />} />
+        </Route>
 
         {/* Catch-all redirect to landing */}
         <Route path="*" element={<Navigate to="/" replace />} />
