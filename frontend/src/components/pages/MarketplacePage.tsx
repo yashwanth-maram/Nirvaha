@@ -246,7 +246,7 @@ export function MarketplacePage() {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-16 bg-white text-slate-900">
+    <div className="min-h-screen pt-24 pb-16 bg-gradient-to-br from-[#fdfcfb] via-[#f8f7f4] to-[#f5f4f1] text-slate-900">
       <div className="max-w-screen-2xl mx-auto px-4 md:px-6">
         {/* Page Header */}
         <motion.div
@@ -279,11 +279,10 @@ export function MarketplacePage() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab("sessions")}
-              className={`px-8 py-4 rounded-[24px] transition-all flex items-center gap-2 ${
-                activeTab === "sessions"
+              className={`px-8 py-4 rounded-[24px] transition-all flex items-center gap-2 ${activeTab === "sessions"
                   ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg"
                   : "text-teal-700 hover:bg-emerald-50"
-              }`}
+                }`}
             >
               <BookOpen className="w-5 h-5" />
               <span>Sessions</span>
@@ -291,11 +290,10 @@ export function MarketplacePage() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab("retreats")}
-              className={`px-8 py-4 rounded-[24px] transition-all flex items-center gap-2 ${
-                activeTab === "retreats"
+              className={`px-8 py-4 rounded-[24px] transition-all flex items-center gap-2 ${activeTab === "retreats"
                   ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg"
                   : "text-teal-700 hover:bg-emerald-50"
-              }`}
+                }`}
             >
               <MapPin className="w-5 h-5" />
               <span>Retreats</span>
@@ -303,11 +301,10 @@ export function MarketplacePage() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab("products")}
-              className={`px-8 py-4 rounded-[24px] transition-all flex items-center gap-2 ${
-                activeTab === "products"
+              className={`px-8 py-4 rounded-[24px] transition-all flex items-center gap-2 ${activeTab === "products"
                   ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg"
                   : "text-teal-700 hover:bg-emerald-50"
-              }`}
+                }`}
             >
               <ShoppingBag className="w-5 h-5" />
               <span>Products</span>

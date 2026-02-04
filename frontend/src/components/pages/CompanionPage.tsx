@@ -50,7 +50,7 @@ export function CompanionPage() {
         if (parsed.length > 0) {
           setHasApplied(true);
           const userEmail = parsed[0]?.email;
-          
+
           // Check if user is approved as companion
           const companionsRaw = localStorage.getItem('nirvaha_approved_companions');
           if (companionsRaw) {
@@ -60,7 +60,7 @@ export function CompanionPage() {
           }
         }
       }
-    } catch {}
+    } catch { }
   }, []);
 
   // Poll for approval status changes every 2 seconds
@@ -80,7 +80,7 @@ export function CompanionPage() {
             }
           }
         }
-      } catch {}
+      } catch { }
     }, 2000);
 
     return () => clearInterval(interval);
@@ -215,14 +215,14 @@ export function CompanionPage() {
     try {
       const raw = localStorage.getItem("nirvaha_liked_companions");
       if (raw) setLikedIds(JSON.parse(raw));
-    } catch {}
+    } catch { }
   }, []);
 
   const saveLiked = (next: string[]) => {
     setLikedIds(next);
     try {
       localStorage.setItem("nirvaha_liked_companions", JSON.stringify(next));
-    } catch {}
+    } catch { }
   };
 
   const toggleLike = (id: string) => {
@@ -259,7 +259,7 @@ export function CompanionPage() {
       const arr = raw ? JSON.parse(raw) : [];
       arr.unshift(record);
       localStorage.setItem("nirvaha_bookings", JSON.stringify(arr));
-    } catch {}
+    } catch { }
     setBooking({ open: false, companion: null, type: null, platform: "", date: "", time: "" });
     alert("Booking requested successfully. You'll receive details soon.");
   };
@@ -291,12 +291,12 @@ export function CompanionPage() {
         localStorage.removeItem('nirvaha_companion_applications');
         setHasApplied(false);
         alert('Application cancelled successfully.');
-      } catch {}
+      } catch { }
     }
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 bg-white">
+    <div className="min-h-screen pt-24 pb-16 bg-gradient-to-br from-[#fdfcfb] via-[#f8f7f4] to-[#f5f4f1]">
       <div className="max-w-screen-2xl mx-auto px-4 md:px-6">
         {/* Page Header */}
         <motion.div
@@ -480,163 +480,161 @@ export function CompanionPage() {
           </motion.div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredCompanions.map((companion, i) => (
-            <motion.div
-              key={companion.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="group relative"
-            >
+            {filteredCompanions.map((companion, i) => (
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${companion.color} rounded-[40px] blur-xl opacity-0 group-hover:opacity-30 transition-opacity`}
-              />
-              <div className="relative bg-white/90 backdrop-blur-xl rounded-[40px] overflow-hidden shadow-xl border border-emerald-200/30 h-[500px] flex flex-col">
-                {/* Cover Image */}
-                <div className="relative h-[17.5%] min-h-[88px] overflow-hidden">
-                  <img
-                    src={companion.coverImage}
-                    alt={companion.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
-
-                  {/* Availability Badge */}
-                  <div className="absolute top-4 right-4">
-                    <div
-                      className={`px-3 py-1 rounded-full text-xs backdrop-blur-xl shadow-lg flex items-center gap-2 ${
-                        companion.availability === "Available"
-                          ? "bg-emerald-500/90 text-white"
-                          : "bg-orange-500/90 text-white"
-                      }`}
-                    >
-                      <div
-                        className={`w-2 h-2 rounded-full ${
-                          companion.availability === "Available"
-                            ? "bg-lime-300 animate-pulse"
-                            : "bg-orange-200"
-                        }`}
-                      />
-                      {companion.availability}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Profile Avatar */}
-                <div className="relative px-6 -mt-12 mb-3">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="w-20 h-20 rounded-[20px] border-4 border-white shadow-xl overflow-hidden"
-                  >
+                key={companion.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group relative"
+              >
+                <motion.div
+                  className={`absolute inset-0 bg-gradient-to-br ${companion.color} rounded-[40px] blur-xl opacity-0 group-hover:opacity-30 transition-opacity`}
+                />
+                <div className="relative bg-white/90 backdrop-blur-xl rounded-[40px] overflow-hidden shadow-xl border border-emerald-200/30 h-[500px] flex flex-col">
+                  {/* Cover Image */}
+                  <div className="relative h-[17.5%] min-h-[88px] overflow-hidden">
                     <img
-                      src={companion.avatar}
+                      src={companion.coverImage}
                       alt={companion.name}
                       className="w-full h-full object-cover"
                     />
-                  </motion.div>
-                </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
 
-                {/* Profile Info */}
-                <div className="px-6 pb-4 flex-1 flex flex-col overflow-hidden">
-                  <h3 className="text-teal-800 mb-1 truncate">{companion.name}</h3>
-                  <p className="text-sm text-teal-600 mb-3 truncate">
-                    {companion.title}
-                  </p>
-
-                  {/* Stats Row */}
-                  <div className="flex items-center gap-4 mb-3 text-sm">
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-lime-400 text-lime-400" />
-                      <span className="text-teal-800">{companion.rating}</span>
-                      <span className="text-teal-600">
-                        ({companion.reviews})
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1 text-teal-600">
-                      <Video className="w-4 h-4" />
-                      {companion.sessions} sessions
-                    </div>
-                  </div>
-
-                  {/* Location */}
-                  <div className="flex items-center gap-2 text-sm text-teal-600 mb-2 truncate">
-                    <MapPin className="w-4 h-4 flex-shrink-0" />
-                    <span className="truncate">{companion.location}</span>
-                  </div>
-
-                  {/* Bio */}
-                  <p className="text-sm text-teal-700 mb-3 line-clamp-2 overflow-hidden">
-                    {companion.bio}
-                  </p>
-
-                  {/* Specialties */}
-                  <div className="flex flex-wrap gap-2 mb-3 overflow-hidden">
-                    {companion.specialties.slice(0, 2).map((specialty, j) => (
-                      <span
-                        key={j}
-                        className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full"
+                    {/* Availability Badge */}
+                    <div className="absolute top-4 right-4">
+                      <div
+                        className={`px-3 py-1 rounded-full text-xs backdrop-blur-xl shadow-lg flex items-center gap-2 ${companion.availability === "Available"
+                            ? "bg-emerald-500/90 text-white"
+                            : "bg-orange-500/90 text-white"
+                          }`}
                       >
-                        {specialty}
-                      </span>
-                    ))}
-                    {companion.specialties.length > 2 && (
-                      <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full">
-                        +{companion.specialties.length - 2}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Pricing */}
-                  <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-3 mb-3">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <p className="text-xs text-teal-600 mb-1">Per Hour</p>
-                        <p className="text-lg text-teal-800">
-                          {companion.hourlyRate}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-teal-600 mb-1">Per Call</p>
-                        <p className="text-lg text-teal-800">
-                          {companion.callRate}
-                        </p>
+                        <div
+                          className={`w-2 h-2 rounded-full ${companion.availability === "Available"
+                              ? "bg-lime-300 animate-pulse"
+                              : "bg-orange-200"
+                            }`}
+                        />
+                        {companion.availability}
                       </div>
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-2 mb-3 mt-auto">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => setSelectedCompanion(companion)}
-                      className="flex-1 py-3 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all"
-                      style={{ backgroundColor: '#1a5d47' }}
+                  {/* Profile Avatar */}
+                  <div className="relative px-6 -mt-12 mb-3">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="w-20 h-20 rounded-[20px] border-4 border-white shadow-xl overflow-hidden"
                     >
-                      Book Session
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => toggleLike(companion.id)}
-                      aria-pressed={likedIds.includes(companion.id)}
-                      className={`w-12 h-12 bg-white border-2 rounded-2xl flex items-center justify-center transition-colors ${likedIds.includes(companion.id) ? 'border-rose-200 bg-rose-50' : 'border-emerald-200 hover:bg-emerald-50'}`}
-                    >
-                      <Heart className={`w-5 h-5 ${likedIds.includes(companion.id) ? 'fill-rose-500 text-rose-500' : 'text-rose-500'}`} />
-                    </motion.button>
+                      <img
+                        src={companion.avatar}
+                        alt={companion.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
                   </div>
 
-                  {/* Response Time - Compact */}
-                  <div className="flex items-center justify-center gap-2 text-xs text-teal-600">
-                    <Clock className="w-3 h-3" />
-                    {companion.responseTime}
+                  {/* Profile Info */}
+                  <div className="px-6 pb-4 flex-1 flex flex-col overflow-hidden">
+                    <h3 className="text-teal-800 mb-1 truncate">{companion.name}</h3>
+                    <p className="text-sm text-teal-600 mb-3 truncate">
+                      {companion.title}
+                    </p>
+
+                    {/* Stats Row */}
+                    <div className="flex items-center gap-4 mb-3 text-sm">
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 fill-lime-400 text-lime-400" />
+                        <span className="text-teal-800">{companion.rating}</span>
+                        <span className="text-teal-600">
+                          ({companion.reviews})
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 text-teal-600">
+                        <Video className="w-4 h-4" />
+                        {companion.sessions} sessions
+                      </div>
+                    </div>
+
+                    {/* Location */}
+                    <div className="flex items-center gap-2 text-sm text-teal-600 mb-2 truncate">
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
+                      <span className="truncate">{companion.location}</span>
+                    </div>
+
+                    {/* Bio */}
+                    <p className="text-sm text-teal-700 mb-3 line-clamp-2 overflow-hidden">
+                      {companion.bio}
+                    </p>
+
+                    {/* Specialties */}
+                    <div className="flex flex-wrap gap-2 mb-3 overflow-hidden">
+                      {companion.specialties.slice(0, 2).map((specialty, j) => (
+                        <span
+                          key={j}
+                          className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full"
+                        >
+                          {specialty}
+                        </span>
+                      ))}
+                      {companion.specialties.length > 2 && (
+                        <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full">
+                          +{companion.specialties.length - 2}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-3 mb-3">
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <p className="text-xs text-teal-600 mb-1">Per Hour</p>
+                          <p className="text-lg text-teal-800">
+                            {companion.hourlyRate}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-teal-600 mb-1">Per Call</p>
+                          <p className="text-lg text-teal-800">
+                            {companion.callRate}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mb-3 mt-auto">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => setSelectedCompanion(companion)}
+                        className="flex-1 py-3 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                        style={{ backgroundColor: '#1a5d47' }}
+                      >
+                        Book Session
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => toggleLike(companion.id)}
+                        aria-pressed={likedIds.includes(companion.id)}
+                        className={`w-12 h-12 bg-white border-2 rounded-2xl flex items-center justify-center transition-colors ${likedIds.includes(companion.id) ? 'border-rose-200 bg-rose-50' : 'border-emerald-200 hover:bg-emerald-50'}`}
+                      >
+                        <Heart className={`w-5 h-5 ${likedIds.includes(companion.id) ? 'fill-rose-500 text-rose-500' : 'text-rose-500'}`} />
+                      </motion.button>
+                    </div>
+
+                    {/* Response Time - Compact */}
+                    <div className="flex items-center justify-center gap-2 text-xs text-teal-600">
+                      <Clock className="w-3 h-3" />
+                      {companion.responseTime}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
         )}
 
         {/* Profile Modal */}
