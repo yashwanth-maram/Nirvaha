@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import { Navigation } from '../components/Navigation';
 import { DashboardFooter } from '../components/dashboard/DashboardFooter';
 
@@ -95,27 +95,12 @@ const impactSkills = [
     },
 ];
 
-// --- FAQs ---
-const faqs = [
-    {
-        question: 'Who are these courses for?',
-        answer: 'Our programs are designed for professionals, founders, managers, and anyone looking to strengthen their reasoning, decision-making, and communication skills in modern work environments.',
-    },
-    {
-        question: 'Are the programs self-paced?',
-        answer: 'Yes, all our certification programs are self-paced, allowing you to learn on your schedule while maintaining access to structured assessments and community support.',
-    },
-    {
-        question: 'Do I need a technical background?',
-        answer: 'No prior technical expertise is needed. Our programs are designed to be accessible to all professionals regardless of their technical background.',
-    },
-];
 
 // --- Tags ---
 const tags = ['Skill-Focused', 'Assessment-Based', 'Industry Relevant', 'No Prior Expertise Needed'];
 
 const NirvahaAcademyPage: React.FC = () => {
-    const [openFaq, setOpenFaq] = useState<number | null>(null);
+    
 
     return (
         <div className="min-h-screen bg-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
@@ -402,7 +387,7 @@ const NirvahaAcademyPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* ===== FAQs ===== */}
+            {/* ===== CONTACT / QUERIES ===== */}
             <section className="bg-[#f7fafc] py-16 lg:py-20 border-t border-gray-100">
                 <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.h2
@@ -410,58 +395,50 @@ const NirvahaAcademyPage: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.7 }}
-                        className="text-3xl sm:text-4xl font-bold text-[#0F131A] mb-10 text-center"
+                        className="text-3xl sm:text-4xl font-bold text-[#0F131A] mb-4 text-center"
                         style={{ fontFamily: "'Cinzel', serif" }}
                     >
-                        Frequently Asked Questions
+                        Questions or Queries?
                     </motion.h2>
-                    <div className="space-y-3">
-                        {faqs.map((faq, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false }}
-                                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                                className="border border-gray-200 rounded-xl bg-white overflow-hidden"
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-[#595e67] text-base sm:text-lg text-center max-w-2xl mx-auto font-light"
+                    >
+                        If you'd like to learn more about a program, have specific queries, or need help choosing the right certification, reach out — we're here to help.
+                    </motion.p>
+
+                    <form className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-4">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#1a5d47]/30 outline-none"
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email address"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#1a5d47]/30 outline-none"
+                        />
+                        <textarea
+                            name="message"
+                            placeholder="How can we help?"
+                            rows={5}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#1a5d47]/30 outline-none resize-none"
+                        />
+                        <div className="flex justify-center">
+                            <button
+                                type="button"
+                                onClick={() => window.location.href = 'mailto:hello@nirvaha.org'}
+                                className="px-6 py-3 rounded-lg bg-[#1a5d47] text-white font-semibold shadow hover:bg-[#174c39] transition-all"
                             >
-                                <button
-                                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                                    className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
-                                >
-                                    <span className="text-[#0F131A] font-medium text-base">
-                                        •  {faq.question}
-                                    </span>
-                                    <motion.div
-                                        animate={{ rotate: openFaq === idx ? 180 : 0 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <ChevronDown className="w-5 h-5 text-[#595e67]" />
-                                    </motion.div>
-                                </button>
-                                <AnimatePresence>
-                                    {openFaq === idx && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                                            className="overflow-hidden"
-                                        >
-                                            <p className="px-6 pb-5 text-[#595e67] text-sm leading-relaxed font-light">
-                                                {faq.answer}
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
-                        ))}
-                    </div>
-                    <div className="flex justify-center mt-8">
-                        <button className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-[#0F131A] text-sm font-semibold hover:border-[#1a5d47] hover:text-[#1a5d47] transition-all">
-                            View All FAQs <ArrowRight className="w-4 h-4" />
-                        </button>
-                    </div>
+                                Contact Us
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </section>
 
