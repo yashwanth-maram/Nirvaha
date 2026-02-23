@@ -41,7 +41,65 @@ const WhatIsNirvaha: React.FC = () => {
 
     return (
         <section className="relative w-full py-16 lg:py-24 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            {/* Decorative Background Shapes */}
+            <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                {/* Top-left corner — lotus / circle */}
+                <svg className="absolute -top-6 -left-8 w-36 h-36 text-[#1a5d47] opacity-[0.04]" viewBox="0 0 100 100" fill="currentColor">
+                    <circle cx="50" cy="50" r="45" />
+                </svg>
+
+                {/* Top-right — diamond */}
+                <svg className="absolute top-10 right-6 w-20 h-20 text-[#1a5d47] opacity-[0.06] rotate-45" viewBox="0 0 100 100" fill="currentColor">
+                    <rect x="15" y="15" width="70" height="70" rx="8" />
+                </svg>
+
+                {/* Left edge mid — hexagon */}
+                <svg className="absolute top-1/3 -left-4 w-28 h-28 text-[#1a5d47] opacity-[0.03]" viewBox="0 0 100 100" fill="currentColor">
+                    <polygon points="50,3 93,25 93,75 50,97 7,75 7,25" />
+                </svg>
+
+                {/* Right edge mid — triangle */}
+                <svg className="absolute top-[45%] -right-3 w-24 h-24 text-[#1a5d47] opacity-[0.05] rotate-12" viewBox="0 0 100 100" fill="currentColor">
+                    <polygon points="50,10 90,85 10,85" />
+                </svg>
+
+                {/* Below card left — small circle */}
+                <svg className="absolute bottom-16 left-[8%] w-14 h-14 text-[#1a5d47] opacity-[0.07]" viewBox="0 0 100 100" fill="currentColor">
+                    <circle cx="50" cy="50" r="40" />
+                </svg>
+
+                {/* Below card right — rounded square */}
+                <svg className="absolute bottom-20 right-[10%] w-18 h-18 text-[#1a5d47] opacity-[0.05] -rotate-12" viewBox="0 0 100 100" fill="currentColor">
+                    <rect x="10" y="10" width="80" height="80" rx="20" />
+                </svg>
+
+                {/* Bottom-left corner — dots cluster */}
+                <svg className="absolute -bottom-4 -left-6 w-32 h-32 text-[#1a5d47] opacity-[0.03]" viewBox="0 0 100 100" fill="currentColor">
+                    <circle cx="20" cy="20" r="8" />
+                    <circle cx="50" cy="30" r="6" />
+                    <circle cx="35" cy="55" r="10" />
+                    <circle cx="70" cy="50" r="5" />
+                </svg>
+
+                {/* Bottom-right corner — ring */}
+                <svg className="absolute -bottom-6 -right-8 w-40 h-40 text-[#1a5d47] opacity-[0.04]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+                    <circle cx="50" cy="50" r="42" />
+                    <circle cx="50" cy="50" r="28" />
+                </svg>
+
+                {/* Upper-center — small diamond */}
+                <svg className="absolute top-20 left-[55%] w-10 h-10 text-[#1a5d47] opacity-[0.06] rotate-45" viewBox="0 0 100 100" fill="currentColor">
+                    <rect x="20" y="20" width="60" height="60" rx="6" />
+                </svg>
+
+                {/* Mid-left below header — leaf shape */}
+                <svg className="absolute top-[28%] left-[15%] w-12 h-12 text-[#1a5d47] opacity-[0.05] rotate-[30deg]" viewBox="0 0 100 100" fill="currentColor">
+                    <ellipse cx="50" cy="50" rx="20" ry="45" />
+                </svg>
+            </div>
+
+            <div className="max-w-6xl mx-auto w-full px-2 sm:px-4 relative z-10">
 
                 {/* Header */}
                 <div className="mb-12 lg:mb-16">
@@ -67,7 +125,7 @@ const WhatIsNirvaha: React.FC = () => {
                 </div>
 
                 {/* Unified Card Container - Side by Side, Attached */}
-                <div className="flex flex-col lg:flex-row shadow-2xl rounded-3xl overflow-hidden min-h-[500px] border border-gray-100 items-stretch">
+                <div className="flex flex-col lg:flex-row shadow-2xl rounded-3xl overflow-hidden min-h-[500px] border border-gray-100 items-stretch w-full">
 
                     {/* LEFT COLUMN: Dynamic Visual - Attached 50% width, matches height */}
                     <div className="relative w-full lg:w-1/2 bg-gray-900 overflow-hidden min-h-[300px]">

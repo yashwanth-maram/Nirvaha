@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Toaster } from './components/ui/toaster';
 import { Toaster as Sonner } from './components/ui/sonner';
 import LandingPage from './pages/LandingPage';
+import NirvahaAcademyPage from './pages/NirvahaAcademyPage';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import ProtectedRoute from './components/common/ProtectedRoute';
@@ -72,6 +73,7 @@ function AppInner() {
       <Routes>
         {/* Public Landing Page */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/academy" element={<NirvahaAcademyPage />} />
 
         {/* Auth Routes */}
         <Route path="/login" element={<Login />} />

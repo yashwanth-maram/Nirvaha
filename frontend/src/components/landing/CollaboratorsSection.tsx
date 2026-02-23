@@ -1,4 +1,5 @@
 import React from 'react';
+import DecorativeShapes from './DecorativeShapes';
 
 const partners = [
   { image: "/feat/f1.jpeg", name: "Global Wellness" },
@@ -19,8 +20,9 @@ const partners = [
 
 const CollaboratorsSection: React.FC = () => {
   return (
-    <section className="pt-4 pb-24 bg-white">
-      <div className="max-w-[1400px] mx-auto px-4">
+    <section className="pt-4 pb-24 bg-white relative overflow-hidden">
+      <DecorativeShapes variant={4} />
+      <div className="max-w-[1400px] mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0F131A] tracking-tight"

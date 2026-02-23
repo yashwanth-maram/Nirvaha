@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import DecorativeShapes from './DecorativeShapes';
 
 const goals = [
     {
@@ -106,9 +107,10 @@ export function AncientWisdomSection() {
 
     return (
         <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+            <DecorativeShapes variant={5} />
             <div className="w-full relative z-10">
                 {/* Header - Constrained width */}
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+                <div className="max-w-7xl pl-4 sm:pl-6 lg:pl-8 pr-4 mb-8">
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}

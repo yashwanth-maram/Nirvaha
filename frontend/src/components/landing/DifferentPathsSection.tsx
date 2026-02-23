@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sprout, Scale, Zap } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import DecorativeShapes from './DecorativeShapes';
 
 // --- Content Data ---
 const pathCards = [
@@ -26,6 +27,7 @@ export function DifferentPathsSection() {
 
     return (
         <section className="relative w-full overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+            <DecorativeShapes variant={2} />
 
 
             {/* Background decorative shapes */}

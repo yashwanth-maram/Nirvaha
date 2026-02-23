@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import DecorativeShapes from './DecorativeShapes';
 
 export function LeadershipHeroSection() {
     const { ref: sectionRef, inView } = useScrollAnimation();
@@ -8,6 +9,7 @@ export function LeadershipHeroSection() {
             className="relative w-full overflow-hidden bg-white"
             ref={sectionRef}
         >
+            <DecorativeShapes variant={1} />
             {/* Background Aura Glows */}
             <div className="absolute inset-0 pointer-events-none">
                 <div

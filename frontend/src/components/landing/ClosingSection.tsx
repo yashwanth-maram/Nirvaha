@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
+import DecorativeShapes from './DecorativeShapes';
 
 const ClosingSection: React.FC = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const ClosingSection: React.FC = () => {
     };
     return (
         <section className="relative overflow-hidden py-24 md:py-32" style={{ backgroundColor: '#0c3328' }}>
+            <DecorativeShapes variant={1} color="#4ade80" />
             {/* Curved Section Divider */}
             <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-20">
                 <svg

@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
+import DecorativeShapes from './DecorativeShapes';
 
 const GoldenShowcase: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <section className="relative w-full py-12 lg:py-20 overflow-hidden bg-white flex items-center justify-center min-h-[800px]">
+      <DecorativeShapes variant={3} />
 
       {/* Left Placeholder Card - Edge to Edge */}
       <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 w-[30%] h-[800px] bg-white z-10 items-center justify-center overflow-hidden">
@@ -21,9 +23,15 @@ const GoldenShowcase: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-black text-[#0F131A] mb-6 tracking-tighter leading-none" style={{ fontFamily: "'Cinzel', serif" }}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="text-6xl sm:text-7xl lg:text-8xl font-black text-[#0F131A] mb-6 tracking-tighter leading-none" style={{ fontFamily: "'Cinzel', serif" }}
+          >
             About Us
-          </h2>
+          </motion.h2>
           <h3 className="text-xl sm:text-2xl font-medium text-[#595e67] mb-8" style={{ fontFamily: "'Poppins', sans-serif" }}>
             Bridging Ancient Wisdom & Modern Science
           </h3>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import DecorativeShapes from './DecorativeShapes';
 
 const TrustedStats: React.FC = () => {
     const partners = [
@@ -10,8 +11,9 @@ const TrustedStats: React.FC = () => {
     ];
 
     return (
-        <section className="w-full bg-white pt-10 pb-16 relative z-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="w-full bg-white pt-10 pb-16 relative z-20 overflow-hidden">
+            <DecorativeShapes variant={2} />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                 {/* Section Header */}
                 <div className="text-center mb-12">

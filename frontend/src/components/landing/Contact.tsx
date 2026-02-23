@@ -92,6 +92,37 @@ const Contact = () => {
 
   return (
     <section className="relative py-10 px-6 lg:px-12 bg-white overflow-hidden">
+      {/* Decorative shapes — left & right sides only */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Left side shapes */}
+        <svg className="absolute top-8 -left-6 w-32 h-32 opacity-[0.04]" viewBox="0 0 100 100" fill="#1a5d47">
+          <circle cx="50" cy="50" r="42" />
+        </svg>
+        <svg className="absolute top-[30%] -left-4 w-24 h-24 opacity-[0.05] rotate-[15deg]" viewBox="0 0 100 100" fill="#1a5d47">
+          <polygon points="50,3 93,25 93,75 50,97 7,75 7,25" />
+        </svg>
+        <svg className="absolute top-[55%] -left-3 w-20 h-20 opacity-[0.06] rotate-45" viewBox="0 0 100 100" fill="#1a5d47">
+          <rect x="15" y="15" width="70" height="70" rx="8" />
+        </svg>
+        <svg className="absolute top-[75%] left-2 w-14 h-14 opacity-[0.04]" viewBox="0 0 100 100" fill="#1a5d47">
+          <polygon points="50,10 90,85 10,85" />
+        </svg>
+
+        {/* Right side shapes */}
+        <svg className="absolute top-6 -right-5 w-28 h-28 opacity-[0.04] rotate-[10deg]" viewBox="0 0 100 100" fill="#1a5d47">
+          <polygon points="50,3 93,25 93,75 50,97 7,75 7,25" />
+        </svg>
+        <svg className="absolute top-[35%] -right-4 w-20 h-20 opacity-[0.05]" viewBox="0 0 100 100" fill="#1a5d47">
+          <circle cx="50" cy="50" r="36" />
+        </svg>
+        <svg className="absolute top-[58%] right-3 w-16 h-16 opacity-[0.06] rotate-[60deg]" viewBox="0 0 100 100" fill="#1a5d47">
+          <ellipse cx="50" cy="50" rx="18" ry="40" />
+        </svg>
+        <svg className="absolute top-[78%] -right-6 w-26 h-26 opacity-[0.03]" viewBox="0 0 100 100" fill="none" stroke="#1a5d47" strokeWidth={3}>
+          <circle cx="50" cy="50" r="40" />
+          <circle cx="50" cy="50" r="24" />
+        </svg>
+      </div>
       {/* Import Sleek Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playball&family=Poppins:wght@300;400;600;700&display=swap');

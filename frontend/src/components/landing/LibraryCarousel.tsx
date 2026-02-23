@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import DecorativeShapes from './DecorativeShapes';
 
 const libraryItems = [
     { title: "Meditation", category: "Mindfulness", image: "/services/meditation.png", duration: "10 min" },
@@ -14,7 +15,8 @@ const libraryItems = [
 const LibraryCarousel: React.FC = () => {
     return (
         <section className="w-full pt-4 pb-12 bg-white overflow-hidden relative">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <DecorativeShapes variant={4} />
+            <div className="max-w-7xl pl-4 sm:pl-6 lg:pl-8 pr-4 mb-8 relative z-10">
                 <div className="text-left">
                     <motion.h2
                         initial={{ opacity: 0, x: -20 }}
